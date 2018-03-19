@@ -56,6 +56,31 @@ $(document).ready( function() {
         });
     }
 
+    function getDateRollHTML(options) {
+        var days = ["Sun","Mon","Tue","Wed","Thu","Fri","Sat"];
+        var daterange = options['enddate'].getDate() - options['startdate'].getDate();
+
+        var rollDate = new Date(options['startdate']);
+        var mustacheData = { dates: [] };
+
+        for (var i = 0; i < daterange; i++) {
+            month = rollDate.getMonth()
+            date = rollDate.getDate()
+            weekday = days[rollDate.getDay()];
+
+            mustacheData.dates.push({
+                month: month,
+                date: date,
+                weekday: weekday
+            });
+
+            rollDate = new Date(rollDate.getDate() + 1);
+        }
+
+        var template = $('#date-roll-template').html();
+        var info = Mustache.render(template, mustacheData);
+    }
+
     function deleteEvent(id, secret) {
         var data = new FormData();
         data.append('json', JSON.stringify({
@@ -92,7 +117,13 @@ $(document).ready( function() {
 
         container.empty()
              .append($('#scrollToTop').html())
-             .append($('#legend-template').html());
+             .append($('#legend-template').html())
+             .append($('#date-roll-template').html());
+
+        getDateRollHTML({
+            startdate: startDate,
+            enddate: endDate
+        });
 
         getEventHTML({
             startdate: startDate,
@@ -157,7 +188,7 @@ $(document).ready( function() {
         }, function (eventHTML) {
             if (curPage !== "viewPedalpalooza") {
                 return;
-            } 
+            }
              container.append(eventHTML);
              checkAnchors();
         });

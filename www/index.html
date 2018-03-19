@@ -184,6 +184,14 @@
     	</div>
     </script>
 
+    <script id="date-roll-template" type="text/template">
+        <div id="date-roll-container" style="border: 1px solid red; height: 80px;">
+          {{month}}
+          {{date}}
+          {{weekday}}
+        </div>
+    </script>
+
     <script id="view-events-template" type="text/template">
         {{#dates}}
         <div data-date="{{yyyymmdd}}" class="date{{#preview}} preview{{/preview}}">
