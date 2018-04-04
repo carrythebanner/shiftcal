@@ -518,29 +518,30 @@
                         <div class="panel-body">
 
                             <div class="form-group">
-                                <label class="control-label req-label" for="datestring">Date</label>
-                            <div id="date-select-container" class="date-select-container-style form-group">
-                                <table class="day-of-week">
-                                    <tr>
-                                        <td class="calendar-month-title"></td>
-                                        <td>Sun</td>
-                                        <td>Mon</td>
-                                        <td>Tue</td>
-                                        <td>Wed</td>
-                                        <td>Thu</td>
-                                        <td>Fri</td>
-                                        <td>Sat</td>
-                                    </tr>
-                                </table>
-                                <div id="date-select" class="date-select-style">
-                                    <div id="load-earlier" class="loading-zone"></div>
-                                    <table id="date-picker" class="date-picker-style">
+                                <label class="control-label req-label" for="dates">Date</label>
+<!--                                 <input id="dates" name="dates[]" type="date"> -->
+                                <div id="date-select-container" class="date-select-container-style form-group">
+                                    <table class="day-of-week">
+                                        <tr>
+                                            <td class="calendar-month-title"></td>
+                                            <td>Sun</td>
+                                            <td>Mon</td>
+                                            <td>Tue</td>
+                                            <td>Wed</td>
+                                            <td>Thu</td>
+                                            <td>Fri</td>
+                                            <td>Sat</td>
+                                        </tr>
                                     </table>
-                                    <div id="load-later" class="loading-zone"></div>
+                                    <div id="date-select" class="date-select-style">
+                                        <div id="load-earlier" class="loading-zone"></div>
+                                        <table id="date-picker" class="date-picker-style">
+                                        </table>
+                                        <div id="load-later" class="loading-zone"></div>
+                                    </div>
+                                    Selected dates:
+                                    <div id="date-selected"></div>
                                 </div>
-                                Selected dates:
-                                <div id="date-selected"></div>
-                            </div>
                             </div>
 
                             <div class="form-group">
@@ -693,24 +694,27 @@
                             <div class="checkbox">
                                 <input type="hidden" name="printevent" value="0" />
                                 <label class="control-label" for="printevent">
-                                    <input type="checkbox" name="printevent" id="printevent" aria-describedby="printevent-help" value="1" {{# printevent }}checked{{/ printevent }} />
+                                    <input type="checkbox" name="printevent" id="printevent" aria-describedby="printevent-help" value="1" {{# printevent }}checked{{/ printevent }} onchange="document.getElementById('print-inputs').disabled = !this.checked;"/>
                                     Include in the print calendar
                                 </label>
                                 <p class="input-help" id="printevent-help">You must submit at least 3 weeks in advance. Inclusion not guaranteed.</p>
 
                             </div>
-                            <div class="form-group">
-                                <label class="control-label" for="tinytitle">Print title (24 characters)</label>
-                                <input type="text" class="form-control" name="tinytitle" id="tinytitle" value="{{tinytitle}}" maxlength="24" />
-                            </div>
-                            <div class="form-group">
-                                <label class="control-label" for="printdescr">Print description (120 characters)</label>
-                                <textarea class="form-control" name="printdescr" id="printdescr" maxlength="120" >{{printdescr}}</textarea>
-                            </div>
-                            <div class="form-group">
-                                <label class="control-label" for="printcontact">Print contact info (255 characters)</label>
-                                <input type="text" class="form-control" name="printcontact" id="printcontact" value="{{printcontact}}" maxlength="255" />
-                            </div>
+                            <fieldset id="print-inputs" {{^ printevent }}disabled{{/ printevent }}>
+                                <legend>Print fields</legend>
+                                <div class="form-group">
+                                    <label class="control-label" for="tinytitle">Print title (24 characters)</label>
+                                    <input type="text" class="form-control" name="tinytitle" id="tinytitle" value="" maxlength="24" />
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label" for="printdescr">Print description (120 characters)</label>
+                                    <textarea class="form-control" name="printdescr" id="printdescr" maxlength="120" >{{printdescr}}</textarea>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label" for="printcontact">Print contact info (255 characters)</label>
+                                    <input type="text" class="form-control" name="printcontact" id="printcontact" value="{{printcontact}}" maxlength="255" />
+                                </div>
+                            </fieldset>
                         </div>
                     </div>
                 </div>

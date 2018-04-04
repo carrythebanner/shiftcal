@@ -48,7 +48,7 @@ $(document).ready( function() {
             var template = $('#view-events-template').html();
             var info = Mustache.render(template, mustacheData);
             callback(info);
-        });
+        }, 'json');
     }
 
     function deleteEvent(id, secret) {
