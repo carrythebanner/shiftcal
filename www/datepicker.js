@@ -85,7 +85,8 @@
                     }
                 }
                 $e.toggleClass('selected', dateMap[date]);
-                $dateSelected.html($datePicker.dateList().join('<br>'));
+                $dateSelected.html("");
+                selectedDatesListHTML($dateSelected, $datePicker.dateList());
 
                 return false;
             }
@@ -94,9 +95,16 @@
 
         // Setup the month table scroll checks
         $dateSelect.scroll(checkBounds);
-        $dateSelected.text($datePicker.dateList().join(' '));
+        selectedDatesListHTML($dateSelected, $datePicker.dateList());
         checkBounds();
     };
+
+    function selectedDatesListHTML(list, dates) {
+        $.each(dates, function( index ) {
+          list.append("<li>" + dates[index] + "</li>");
+        });
+        return list;
+    }
 
     function isToday(date) {
         return (date.getDate() === today.getDate()
@@ -107,11 +115,8 @@
     function normalizeDate(date) {
         var jsd = new Date(date);
         jsd.setTime(jsd.getTime() + jsd.getTimezoneOffset()*60*1000);
-        var day = jsd.getDate();
-        var monthIndex = jsd.getMonth();
-        var year = jsd.getFullYear();
 
-        return year + '-' + (monthIndex+1) + '-' + day;
+        return moment(jsd).format("YYYY-MM-DD");
     }
 
     function isSelected(date) {
@@ -209,4 +214,3 @@
     }
 
 }(jQuery));
-
