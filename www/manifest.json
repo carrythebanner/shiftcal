@@ -1,0 +1,26 @@
+{
+  "lang": "en",
+  "dir": "ltr",
+  "name": "Shift to Bikes Event Calendar",
+  "description": "Bike fun in the Portland, Oregon area",
+  "short_name": "Shift",
+  "icons": [{
+    "src": "images/shift-icon-64.png",
+    "sizes": "64x64"
+  }, {
+    "src": "images/shift-icon-128.png",
+    "sizes": "128x128"
+  },{
+    "src": "images/shift-icon-256.png",
+    "sizes": "256x256"
+  },{
+    "src": "images/shift-icon.svg",
+    "sizes": "257x257"
+  }],
+  "start_url": "/viewEvents",
+  "scope": "/",
+  "display": "fullscreen",
+  "orientation": "landscape",
+  "theme_color": "#FF9900",
+  "background_color": "#FF9900"
+}

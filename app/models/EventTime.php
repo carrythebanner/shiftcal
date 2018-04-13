@@ -43,6 +43,15 @@ class EventTime extends fActiveRecord {
         );
     }
 
+    public static function getBySeriesID($id) {
+        return fRecordSet::build(
+            'EventTime', // class
+            array(
+                'id=' => $id
+            )
+        );
+    }
+
     public static function getRangeVisible($firstDay, $lastDay) {
         return fRecordSet::build(
             'EventTime', // class
