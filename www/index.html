@@ -259,17 +259,18 @@
 
                     <li class="event row {{#cancelled}}cancelled{{/cancelled}} {{#featured}}featured{{/featured}}" data-event-id="{{id}}">
                         {{#featured}}<p class="featured-text" id="featured{{caldaily_id}}"><span aria-hidden="true">★ </span>Featured Event<span aria-hidden="true"> ★</span></p>{{/featured}}
-                        <div class="time col-xs-2">
-                            {{#cancelled}}<del>{{/cancelled}}
 
-                            <p><time>{{displayStartTime}}</time></p>
-                            {{#audienceLabel}}
-                                <span class="audience-{{audience}}">{{audienceLabel}}</span>
-                            {{/audienceLabel}}
+                        <div class="row-contents">
+                            <div class="event-callout time">
+                                {{#cancelled}}<del>{{/cancelled}}
 
-                            {{#cancelled}}</del>{{/cancelled}}
-                        </div>
-                        <div class="col-xs-10" >
+                                <p><time>{{displayStartTime}}</time></p>
+                                {{#audienceLabel}}
+                                    <span class="audience-{{audience}}">{{audienceLabel}}</span>
+                                {{/audienceLabel}}
+
+                                {{#cancelled}}</del>{{/cancelled}}
+                            </div>
                             <div class="summary">
                                 {{# featured }}
                                 {{^ newsflash }}
@@ -344,12 +345,17 @@
 
                                 {{#cancelled}}</del>{{/cancelled}}
 
+
                             </div>
                         </div>
 
-                        <div class="col-xs-2">
-                        </div>
-                        <div class="event-details col-xs-10" id="event-details-{{caldaily_id}}" {{^ expanded }}hidden{{/ expanded }} >
+                        <div class="row-contents">
+
+                            <div class="event-callout">
+                                <!-- just for spacing -->
+                            </div>
+
+                            <div class="event-details" id="event-details-{{caldaily_id}}" {{^ expanded }}hidden{{/ expanded }} >
 
                             {{#cancelled}}<del>{{/cancelled}}
 
