@@ -151,9 +151,9 @@ $(document).ready( function() {
 
     function viewPedalpalooza() {
         curPage = "viewPedalpalooza"
-        var startDate = new Date("June 1, 2018");
-        var endDate = new Date("June 30, 2018 23:59:59");
-        var pedalpalooza = '/cal/images/pp/pp2017.jpg';
+        var startDate = new Date("June 1, 2019");
+        var endDate = new Date("June 30, 2019 23:59:59");
+        var pedalpalooza = '/cal/images/pp/pp-general.png';
         container.empty()
              .append($('#pedalpalooza-header').html())
              .append($('#jump-to-date').html())
